@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: "Outfit", sans-serif;
+}
+
+/* ---------- Moodify theme variables (friendly fallback) ---------- */
+:root {
+  --moodify-bg: #ffffff;
+  --moodify-surface: #ffffff;
+  --moodify-text: #0f172a;
+  --moodify-muted: #6b7280;
+  --moodify-border: #e5e7eb;
+  --moodify-accent: #3b82f6;
+}
+
+.moodify-dark {
+  --moodify-bg: #0b1220;
+  --moodify-surface: #0f1724;
+  --moodify-text: #e6eef8;
+  --moodify-muted: #94a3b8;
+  --moodify-border: #233045;
+  --moodify-accent: #60a5fa;
+}
+
+/* Apply only basic page-level colors (no !important, no global resets) */
+html, body, #root {
+  background-color: var(--moodify-bg);
+  color: var(--moodify-text);
+  transition: background-color 220ms ease, color 220ms ease;
+}
+
+/* Improve readability for headings and key text */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--moodify-text);
+}
+
+h2,h3,h4{
+  color:#3b82f6;
+}
+
+/* Muted text */
+p, small, .muted, .text-muted {
+  color: var(--moodify-muted);
+}
+
+/* Make sure navbar/logo area stays visible */
+header, .navbar, .site-header {
+  background: transparent; /* keep layout-controlled */
+}
+
+/* Buttons / cards fallback style (only when DaisyUI missing) */
+.card, .card-body, .panel, .box {
+  background-color: var(--moodify-surface);
+  color: var(--moodify-text);
+  border: 1px solid var(--moodify-border);
+}
+
+/* Basic button fallback — do NOT force transparency or override primary button backgrounds */
+.btn,
+button {
+  color: var(--moodify-text);
+  border-color: var(--moodify-border);
+  /* remove `background: transparent` so utility/background classes (Tailwind/Daisy) can apply */
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+/* Primary-style fallback — keep text readable on all themes */
+.btn-primary,
+.btn.btn-primary {
+  background-color: var(--moodify-accent);
+  color: white;               /* ensure readable label */
+  border-color: transparent;
+}
+
+/* In dark mode ensure primary buttons keep readable text */
+.moodify-dark .btn-primary {
+  background-color: var(--moodify-accent);
+  color: white;               /* previously was dark, which hid the text */
+}
+html {
+  scroll-behavior: smooth;
+}
